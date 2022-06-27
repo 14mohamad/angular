@@ -1,0 +1,49 @@
+<h2>Edit Event</h2>
+
+<div *ngIf="event | async as event; else eventNotFound">
+  <div class="card"style="width: 80rem;">
+    <div class="row">
+      
+        <h4 class="card-title">{{ event.eventName }}</h4>
+        <p>Event Code : {{ event.eventCode }}</p>
+        <p>Number Of Participants: {{ event.numberOfParticipants }}</p>
+        <p>Event Manager Name: {{ event.eventManager.fullName }}</p>
+      </div>
+    </div>
+  <br />
+  <br />
+  <h4>Edit:</h4>
+  <div>
+    <div class="row">
+      <div class="card"style="width: 50rem;">
+      <div class="form-group col-md-6">
+        <label> Name:</label>
+        <input type="text" class="form-control" [(ngModel)]="event.eventName" />
+   
+        <label> Code:</label>
+        <input type="text" class="form-control" [(ngModel)]="event.eventCode" />
+   
+        <label> Participants:</label>
+        <input
+          type="number"
+          class="form-control"
+          [(ngModel)]="event.numberOfParticipants"
+        />
+
+        <label> Manager Name:</label>
+        <input
+          type="text"
+          class="form-control"
+          [(ngModel)]="event.eventManager.fullName"
+        />
+      </div>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #eventNotFound
+  ><h4 style="color: red">Error 404, Event Not Found!</h4>
+</ng-template>
+<br />
+<br />
+<button class="btn btn-primary" (click)="goBack()">BACK</button>
